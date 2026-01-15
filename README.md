@@ -1,8 +1,10 @@
 # Reconnaissance
 ### *1. Service & Stack Enumeration*
+<img src="/img/Screenshot%202026-01-16%20005618.png"></br>
 ### *2. Script Scan*
-________________________________________
-________________________________________
+<img src="/img/Screenshot%202026-01-16%20005054.png"></br>
+---
+---
 # SQLi 
 ## Summary
 A SQL Injection vulnerability was identified in the application’s user lookup functionality. An attacker can manipulate the id parameter to execute arbitrary SQL queries, resulting in unauthorized access to backend database data.
@@ -20,9 +22,10 @@ The application directly incorporates user-supplied input from the id parameter 
 </br>Basic input validation is present but insufficient and can be bypassed using crafted payloads.
 ________________________________________
 ## Steps to Reproduce
-1.	First Intercept the request:  
-2.	We will be using the id parameter to inject SQLi ( SQLi: 1+OR+1=1+UNION+SELECT+user,+password+FROM+users#) :
- 
+1.	First Intercept the request:
+<img src="/img/poc%201.png"></br>
+3.	We will be using the id parameter to inject SQLi ( SQLi payload: 1+OR+1=1+UNION+SELECT+user,+password+FROM+users#) :
+<img src="/img/poc4.png"></br>
 ## Actual Result
 Injected SQL statements are executed by the database, allowing unauthorized access to sensitive data.
 ________________________________________
@@ -77,11 +80,14 @@ The application reflects user input directly into the response page without appl
 ## Steps to Reproduce
 
 1. Navigate to the vulnerable input field.
-2. Submit the following payload as input:
+<img src="img/Screenshot 2026-01-16 011440.png"></br>
+3. Submit the following payload as input:
 
 ```html
 <img src=x onerror=alert(1)>
 ```
+<img src="img/Screenshot 2026-01-16 011448.png"></br>
+<img src="img/Screenshot 2026-01-16 011455.png"></br>
 3. Observe the rendered response in the browser.
 
 ---
