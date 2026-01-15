@@ -118,3 +118,7 @@ Injected HTML and JavaScript are executed in the user’s browser.
 - Validate and sanitize all user input server-side
 - Implement a restrictive Content Security Policy (CSP)
 - Avoid reflecting raw user input in responses
+
+---
+---
+# IDOR: Unauthorized Access to Other Users’ Baskets via Basket ID Manipulation
