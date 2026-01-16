@@ -122,3 +122,37 @@ Injected HTML and JavaScript are executed in the user’s browser.
 ---
 ---
 # IDOR: Unauthorized Access to Other Users’ Baskets via Basket ID Manipulation
+
+## Target
+https://juice-shop.herokuapp.com/
+---
+## Severity
+High
+________________________________________
+## Affected Endpoint
+•	Endpoint: `/rest/basket/9`</br>
+
+---
+## Preconditions
+- Attacker is authenticated as a normal user
+- Victim is another authenticated user with an active basket
+
+---
+## PoC 
+- [PoC Video](https://drive.google.com/file/d/1gqT1K5B0TCTI_XZ61VTZ9HY77OP9E25I/view?usp=drive_link)
+  
+---
+## Expected Result
+- Server should verify basket ownership
+- Request should return 403 Forbidden or equivalent
+
+---
+## Root Cause
+The application relies on client-controlled object references `(basketId)` without validating ownership on the server side.
+
+---
+## Recommended Fix
+- Enforce server-side authorization checks
+- Bind basket IDs to authenticated user IDs
+- Never trust object IDs from the client
+- Use indirect references or session-based basket resolution
